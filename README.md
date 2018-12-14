@@ -1,1 +1,3 @@
-# webminer
+# Custom Pool Mining
+## Supports
+CRYPTONIGHT | CRYPTONIGHT-LITE | CRYPTONIGHT-FAST COINS
