@@ -199,7 +199,8 @@ div.list {
 	opacity: 1;
 }
 
-table { width: 100%; }
+table { width: 100%;
+	margin: 25px 0 25px 0;}
 table, th, td {
   border: 1px solid white;
   border-collapse: collapse;
