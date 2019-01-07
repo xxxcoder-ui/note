@@ -200,10 +200,14 @@ div.list {
 }
 
 table { width: 100%; }
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
 th, td { text-align: left; }
 th.num, td.num { text-align: right; }
 th.rank, td.rank { text-align: right; color: #555; }
-th { color: #555; text-transform: uppercase; font-weight: normal; font-size:12px;}
+th { color: #555; text-transform: uppercase; font-weight: normal; font-size:12px; text-align: center;}
 
 .alignRight{
 	float:right;
