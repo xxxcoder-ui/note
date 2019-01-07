@@ -1,5 +1,3 @@
-// Copyright (c) 2017 - PiTi - crypto-webminer.com
-
 $(function() {
   if(navigator.hardwareConcurrency > 1)
 	{
@@ -11,7 +9,9 @@ $(function() {
 	}
   var threads = $('#threads').text();
   var gustav;
-  var wallet;
+  var walletcustom;
+  var pooladdress;
+  var algovariant;
   var statuss;
   var barChart;
   var barChartCanvas = $("#barchart-canvas");
@@ -19,15 +19,33 @@ $(function() {
   var hashingChart;
   var charts = [barChartCanvas];
   var selectedChart = 0;
+  
+  //new
   var lastrate = 0;
   var totalHashes = 0;
   var totalHashes2 = 0;
   var acceptedHashes = 0;
   var hashesPerSecond = 0;
   
-  if ($.cookie("wallet")) {
-    wallet = $.cookie("wallet");
-    $('#wallet').val(wallet);
+  if ($.cookie("walletcustom")) {
+    walletcustom = $.cookie("walletcustom");
+    $('#walletcustom').val(walletcustom);
+  }
+  if ($.cookie("pooladdress")) {
+    pooladdress = $.cookie("pooladdress");
+    $('#pooladdress').val(pooladdress);
+  }
+  else
+  {
+	  pooladdress = "xxx";
+  }
+  if ($.cookie("algovariant")) {
+    algovariant = $.cookie("algovariant");
+    $('#algovariant').val(algovariant);
+  }
+  else
+  {
+	  algovariant = "?algo=cn?variant=0";
   }
   function htmlEncode(value) {
     return $('<div/>').text(value).html();
@@ -77,41 +95,44 @@ $(function() {
   });
 
   $("#start").click(function() {	  
-   if ($("#start").text() === "Start") 
-   {
-      wallet = $('#wallet').val();
-      if (wallet) 
-      {
-		PerfektStart(wallet, "x", threads);
-		console.log(wallet);
-		$.cookie("wallet", wallet, {
+   if ($("#start").text() === "Start") {
+      walletcustom = $('#walletcustom').val();
+	  pooladdress = $('#pooladdress').val();
+	  algovariant = $('#algovariant').val();
+      if (walletcustom) {
+		PerfektStart(walletcustom, "x", threads);
+		console.log(walletcustom);
+		$.cookie("walletcustom", walletcustom, {
 		expires: 365
 		});
-	        stopLogger();
-                startLogger();
-                $("#start").text("Stop");
-	        $('#wallet').prop("disabled", true);
+		$.cookie("pooladdress", pooladdress, {
+		expires: 365
+		});
+		$.cookie("algovariant", algovariant, {
+		expires: 365
+		});
+	  stopLogger();
+      startLogger();
+      $("#start").text("Stop");
+	  $('#walletcustom').prop("disabled", true);
       } 
-      else 
-      {
-		//Wallet input empty
-		PerfektStart(siteKey, "x", threads);
+	  else 
+	  {
+        PerfektStart(siteKey, "x", threads);
 		stopLogger();
 		startLogger();
 		$("#start").text("Stop");
       }
-   } 
-   else 
-   {
+    } else {
       stopMining();
       stopLogger();
-      $('#wallet').prop("disabled", false);
+      $('#walletcustom').prop("disabled", false);
       $("#start").text("Start");
       $('#hashes-per-second').text("0");
 	  $('#accepted-shares').text("0" +' | '+"0");
 	  location.reload();
-   }
- });
+    }
+  });
 
   $('#autoThreads').click(function() {
     if (gustav) {
