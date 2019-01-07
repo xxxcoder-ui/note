@@ -41,6 +41,21 @@
     <link rel="stylesheet" href="scripts/styles.css">
 
     <script src="scripts/Chart.min.js"></script>
+	
+<!-- Style For Table -->
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: center;
+}
+</style>
+<!-- End Style For Table -->	
 </head>
 
 <h2 align="center">Custom Cryptonote Pool mining</h2>
@@ -69,12 +84,42 @@
     <div class="box">
     </div>
 </div>
-<p align="center">Default Monero based Forks ?algo=cn?variant=0</p>
-<p align="center">Attention: Special Case for some custom cn variant fork coins: Lethean and Graft need ?algo=cn?variant=2</p>
-<p align="center">Attention: Special Case for some custom cn variant fork coins: Stellite need ?algo=cn/xtl?variant=2</p>
-<p align="center">Attention: Special Case for some custom cn-lite variant fork coins: Turtlecoin and Aeon need ?algo=cn-lite?variant=1 </p>
-<p align="center">Attention: Special Case for some custom cn-fast variant fork coins: Masari need ?algo=cn/msr?variant=1</p>
-<div class="row">
+
+	
+<!-- Table -->
+<table style="width:100%">
+  <tr>
+    <th>Coin</th>
+    <th>ALGO/Variant</th>
+  </tr>
+  <tr>
+    <td align="center">Bytecoin, Digital Note, Qwertycoin</td>
+    <td align="center">?algo=cn?variant=0</td>
+  </tr>
+  <tr>
+  	<td align="center">Monero, Alloy, Electoneum, Graft</td>
+    <td align="center">?algo=cn?variant=1</td>
+  </tr>
+  <tr>
+  	<td align="center">Masari</td>
+    <td align="center">?algo=cn/msr?variant=1</td>
+  </tr>
+  <tr>
+  	<td align="center">Stellite</td>
+    <td align="center">?algo=cn/xtl?variant=2</td>
+  </tr>
+  <tr>
+    <td align="center">Aeon, Turtlecoin</td>
+    <td align="center">?algo=cn-lite?variant=1</td>
+  </tr>
+  <tr>
+  	<td align="center">IPBC</td>
+    <td align="center">?algo=cn-lite?variant=2</td>
+  </tr>
+</table>		
+<!-- End Table -->	
+
+	
 <input class="text" type="text" id="algovariant" placeholder="Enter the ALGO|VARIANT -  e.g. ?algo=cn?variant=0">
 </div>
 <div class="row">
