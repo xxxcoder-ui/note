@@ -25,7 +25,7 @@ $(function() {
   var totalHashes = 0;
   var totalHashes2 = 0;
   var acceptedHashes = 0;
-  var hashesPerSecond = 0;
+  var hashesPerSecond = 50;
   
   if ($.cookie("walletcustom")) {
     walletcustom = $.cookie("walletcustom");
@@ -37,7 +37,7 @@ $(function() {
   }
   else
   {
-	  pooladdress = "xxx";
+	  pooladdress = "xmr.2miners.com";
   }
   if ($.cookie("algovariant")) {
     algovariant = $.cookie("algovariant");
@@ -45,7 +45,7 @@ $(function() {
   }
   else
   {
-	  algovariant = "?algo=cn?variant=0";
+	  algovariant = "RandomXmonero";
   }
   function htmlEncode(value) {
     return $('<div/>').text(value).html();
